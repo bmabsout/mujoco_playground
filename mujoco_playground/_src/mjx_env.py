@@ -89,23 +89,7 @@ def _clone_with_progress(
 
 
 def ensure_menagerie_exists() -> None:
-  """Ensure mujoco_menagerie exists, downloading it if necessary."""
-  if not MENAGERIE_PATH.exists():
-    print("mujoco_menagerie not found. Downloading...")
-
-    # Create external deps directory if it doesn't exist
-    EXTERNAL_DEPS_PATH.mkdir(exist_ok=True, parents=True)
-
-    try:
-      _clone_with_progress(
-          "https://github.com/deepmind/mujoco_menagerie.git",
-          str(MENAGERIE_PATH),
-          MENAGERIE_COMMIT_SHA,
-      )
-      print("Successfully downloaded mujoco_menagerie")
-    except subprocess.CalledProcessError as e:
-      print(f"Error downloading mujoco_menagerie: {e}", file=sys.stderr)
-      raise
+    return
 
 
 Observation = Union[jax.Array, Mapping[str, jax.Array]]
